@@ -13,18 +13,17 @@ btnAnterior.addEventListener("click", () => {
     getMovies();
   }
 });
-
 const getMovies = async () => {
   try {
     const response = await fetch(
       `https://api.themoviedb.org/3/movie/popular?api_key=e17acfd98e5cf3cc361c808fdcfa3bcd&languaje=es-ca&page=${pagina}`
     );
-    console.log(response);
     //si la respuesta es correcta
     if (response.status === 200) {
       const data = await response.json();
       let movies = "";
       data.results.forEach((movie) => {
+        console.log(movie);
         movies += `
         <div class="movie">
         <img class="poster" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}">
